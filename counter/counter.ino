@@ -1,6 +1,6 @@
 // Segment pins: A to G, DP
 const int segmentPins[] = {9, 8, 7, 6, 5, 4, 3, 2}; // A-G, DP
-const int digitPins[] = {1, 0}; // Digit 1 (tens), Digit 2 (ones)
+const int digitPins[] = {1, 0}; // 1st digit (tens), 2nd Digit (ones)
 
 // Segment state for digits 0-9 (A to G)
 const byte digits[10][7] = {
@@ -19,12 +19,10 @@ const byte digits[10][7] = {
 void setup() {
   for (int i = 0; i < 8; i++) {
     pinMode(segmentPins[i], OUTPUT);
-    digitalWrite(segmentPins[i], LOW); // Turn OFF segments (common cathode)
   }
 
   for (int i = 0; i < 2; i++) {
     pinMode(digitPins[i], OUTPUT);
-    digitalWrite(digitPins[i], LOW); // Turn OFF digits (common cathode)
   }
 }
 
@@ -37,10 +35,10 @@ void loop() {
     while (millis() - start < 500) { // Hold each number for 500ms
       // Show ones digit (right) first
       displayDigit(ones, 1);
-      delay(5);
+//      delay(5);
       // Then show tens digit (left)
       displayDigit(tens, 0);
-      delay(5);
+//      delay(5);
     }
   }
 }
